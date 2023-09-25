@@ -19,6 +19,11 @@
         // Type conversion
         static string myString = myNewDouble.ToString();
 
+        // Parse string to integer
+        static string numericString = "1";
+        static int parsedNumericString = int.Parse(numericString);
+
+
         public static void Main(string[] args)
 
         {
@@ -27,6 +32,8 @@
             Console.WriteLine(myNewDouble);
             Console.WriteLine(bigNum);
             Console.WriteLine(myString);
+            Console.WriteLine(parsedNumericString);
+
         }
 
     }
