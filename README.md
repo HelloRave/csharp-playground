@@ -29,6 +29,8 @@
 
 `string name = “John Doe”;`
 
+**Constants**
+
 ## Value vs Reference Types
 
 ## Implicit, Explicit, Type Conversion
