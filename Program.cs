@@ -5,21 +5,30 @@
     public class Program
 
     {
+        // Explicit conversion
+        static double age = 15.55;
+        static int myInt = (int)age;
 
-        static int age = 15;
-        static string name = "test";
-        static string caps = name.ToUpper();
+        // Implicit conversion
+        static float myFloat = 13.37f;
+        static double myNewDouble = myFloat;
+
+        static int num = 1;
+        static long bigNum = num;
+
+        // Type conversion
+        static string myString = myNewDouble.ToString();
 
         public static void Main(string[] args)
 
         {
 
-            Console.WriteLine(age);
-            Console.WriteLine(caps);
-
+            Console.WriteLine(myInt);
+            Console.WriteLine(myNewDouble);
+            Console.WriteLine(bigNum);
+            Console.WriteLine(myString);
         }
 
     }
 
 }
-
