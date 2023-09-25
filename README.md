@@ -61,3 +61,5 @@ Console.WriteLine(xs.GetType());  // output: System.Collections.Generic.List`1[S
 1. [Using .NET in Visual Studio Code](https://code.visualstudio.com/docs/languages/dotnet)
 2. [GitHub’s collection of .gitignore file templates](https://github.com/github/gitignore)
 3. [C# documentation](https://learn.microsoft.com/en-us/dotnet/csharp/)
+4. [C# Cheatsheet (1)](https://cheatography.com/laurence/cheat-sheets/c/)
+5. [C# Cheatsheet (2)](https://www.thecodingguys.net/resources/cs-cheat-sheet.pdf)
