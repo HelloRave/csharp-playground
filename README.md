@@ -32,6 +32,17 @@
 ## Value vs Reference Types
 
 ## Implicit, Explicit, Type Conversion
+**Implicitly-typed local variables**
+```
+var greeting = "Hello";
+Console.WriteLine(greeting.GetType());  // output: System.String
+
+var a = 32;
+Console.WriteLine(a.GetType());  // output: System.Int32
+
+var xs = new List<double>();
+Console.WriteLine(xs.GetType());  // output: System.Collections.Generic.List`1[System.Double]
+```
 
 ## String concatenation, formatting and special characters
 

@@ -6,16 +6,13 @@
 
     {
 
-        static string escapedString = "\"Hello World\" \\ \na line break";
-
         public static void Main(string[] args)
 
         {
-            
-            Console.WriteLine(escapedString); 
-            /** output:
-             "Hello World" \
-             a line break */
+
+            var number = 1;
+            number = 2;
+            Console.WriteLine(number);
 
         }
 
