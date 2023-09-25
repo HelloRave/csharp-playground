@@ -6,26 +6,23 @@
 
     {
 
-        static int age = 15;
-        static string name = "test";
+        static string firstName = "Hello";
+        static string lastName = "World";
+        static string fullName = string.Concat(" ", firstName, lastName, " ");
+        static string formatName = String.Format("My name is {0}", fullName);
 
         public static void Main(string[] args)
 
         {
-            // 1. String concatenation
-            Console.WriteLine("String Concatenation: Name is " + name + " age is " + age);
-
-            // 2. String formatting
-            Console.WriteLine("String formatting: Name is {0} and age is {1}", name, age);
-
-            // 3. String interpolation
-            Console.WriteLine($"String formatting: Name is {name} and age is {age}", name, age);
-
-            // 4. Verbatim strings
-            Console.WriteLine(@"Hello world \n
-            New paragraph and empty line following...
-
-            ");
+            
+            Console.WriteLine(fullName); // output: " Hello World "
+            Console.WriteLine(firstName.Substring(2)); // output: "llo"
+            Console.WriteLine(firstName.ToLower()); // output: "hello"
+            Console.WriteLine(firstName.ToUpper()); // output: "HELLO"
+            Console.WriteLine(fullName.Trim()); // output: "Hello World"
+            Console.WriteLine(firstName.IndexOf('e')); // output: 1
+            Console.WriteLine(String.IsNullOrWhiteSpace(firstName)); // output: false
+            Console.WriteLine(formatName);
 
         }
 
