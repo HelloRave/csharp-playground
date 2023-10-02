@@ -6,17 +6,21 @@
 
     {
 
-        const double pi = 3.1415;
-
         public static void Main(string[] args)
 
         {
+            WriteSomething();
+            WriteSomethingSpecific("Hello World");
+        }
 
-            const int num = 1000;
+        public static void WriteSomething()
+        {
+            Console.WriteLine("Hello World");
+        }
 
-            Console.WriteLine(pi);
-            Console.WriteLine(num);
-
+        public static void WriteSomethingSpecific(string myText)
+        {
+            Console.WriteLine(myText);
         }
 
     }
