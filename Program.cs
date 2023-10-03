@@ -9,25 +9,58 @@
         public static void Main(string[] args)
 
         {
-            int num1 = 1;
-            int num2;
+            DisplayCharacter('f');  // Output: A lowercase letter: f
+            DisplayCharacter('R');  // Output: An uppercase letter: R
+            DisplayCharacter('8');  // Output: A digit: 8
+            DisplayCharacter(',');  // Output: Not alphanumeric character: ,
 
-            num2 = -num1;
+            DisplayMeasurement(-4);  // Output: Measured value is -4; too low.
+            DisplayMeasurement(5);  // Output: Measured value is 5.
+            DisplayMeasurement(30);  // Output: Measured value is 30; too high.
+            DisplayMeasurement(double.NaN);  // Output: Failed measurement.
 
-            bool isSunny = true;
 
-            Console.WriteLine($"Values are {num2} and {isSunny}", num2 , !isSunny);
+            void DisplayCharacter(char ch)
+            {
+                if (char.IsUpper(ch))
+                {
+                    Console.WriteLine($"An uppercase letter: {ch}");
+                }
+                else if (char.IsLower(ch))
+                {
+                    Console.WriteLine($"A lowercase letter: {ch}");
+                }
+                else if (char.IsDigit(ch))
+                {
+                    Console.WriteLine($"A digit: {ch}");
+                }
+                else
+                {
+                    Console.WriteLine($"Not alphanumeric character: {ch}");
+                }
+            }
 
-            int num = 0;
+            void DisplayMeasurement(double measurement)
+            {
+                switch (measurement)
+                {
+                    case < 0.0:
+                        Console.WriteLine($"Measured value is {measurement}; too low.");
+                        break;
 
-            // Pre/Post-Increment/Decrement
-            Console.WriteLine("num is {0}", num);
-            Console.WriteLine("num is {0}", num++);
-            Console.WriteLine("num is {0}", ++num);
+                    case > 15.0:
+                        Console.WriteLine($"Measured value is {measurement}; too high.");
+                        break;
 
-            Console.WriteLine("num is {0}", num);
-            Console.WriteLine("num is {0}", num--);
-            Console.WriteLine("num is {0}", --num);
+                    case double.NaN:
+                        Console.WriteLine("Failed measurement.");
+                        break;
+
+                    default:
+                        Console.WriteLine($"Measured value is {measurement}.");
+                        break;
+                }
+            }
         }
 
 

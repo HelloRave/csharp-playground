@@ -118,6 +118,9 @@ Console.WriteLine(xs.GetType());  // output: System.Collections.Generic.List`1[S
 | && | short-circuiting: doesn't evaluate the right-hand operand if the left-hand operand evaluates to false |
 | `||` | short-circuiting: doesn't evaluate the right-hand operand if the left-hand operand evaluates to true |
 
+## Selection statements - `if`, `if-else`, and `switch`
+
+`if(<condition>) { } else if (<condition>) { } else { }`
 
 ## References
 1. [Using .NET in Visual Studio Code](https://code.visualstudio.com/docs/languages/dotnet)
