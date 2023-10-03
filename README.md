@@ -68,6 +68,10 @@ Console.WriteLine(xs.GetType());  // output: System.Collections.Generic.List`1[S
 - Parameter list − Enclosed between parentheses, the parameters are used to pass and receive data from a method. The parameter list refers to the type, order, and number of the parameters of a method. Parameters are optional; that is, a method may contain no parameters.
 - Method body − This contains the set of instructions needed to complete the required activity.
 
+**Try/Catch block**
+
+`try { } catch (Exception) { } finally { }`
+
 ## References
 1. [Using .NET in Visual Studio Code](https://code.visualstudio.com/docs/languages/dotnet)
 2. [GitHub’s collection of .gitignore file templates](https://github.com/github/gitignore)

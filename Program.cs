@@ -9,19 +9,23 @@
         public static void Main(string[] args)
 
         {
-            WriteSomething();
-            WriteSomethingSpecific("Hello World");
+            string userInput = Console.ReadLine();
+
+            try
+            {
+                int userInputAsInt = int.Parse(userInput);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Done");
+            }
+
         }
 
-        public static void WriteSomething()
-        {
-            Console.WriteLine("Hello World");
-        }
-
-        public static void WriteSomethingSpecific(string myText)
-        {
-            Console.WriteLine(myText);
-        }
 
     }
 
