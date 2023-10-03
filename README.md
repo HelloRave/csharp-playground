@@ -72,6 +72,53 @@ Console.WriteLine(xs.GetType());  // output: System.Collections.Generic.List`1[S
 
 `try { } catch (Exception) { } finally { }`
 
+## Operators
+**Arithmetic Operator**
+
+| Operator | Description |
+| -- | -- |
+| + | Add numbers |
+| - | Subtract numbers |
+| * | Multiply numbers |
+| / | Divide numbers |
+| % | Divide two numbers and returns reminder |
+
+**Increment/Decrement Operator**
+- Pre-increment `(++i)` and Post-increment `(i++)`
+	- Pre-increment, first it increments by 1 then loop executes
+	- Post-increment, the loop executes then it increments by 1
+- Pre-Decrement `(--i)` and Post Decrement `(i--)`
+	- Pre-decrement the value is decremented by one then loop executes
+	- Post-decrement the loop executed then the value decrements by one
+
+**Comparison Operator**
+
+| Operator | Description |
+| -- | -- |
+| < | Less than |
+| > | Greater than |
+| <= | Less than equal to |
+| >= | Greater than equal to |
+
+**Equality Operator**
+
+| Operator | Description |
+| -- | -- |
+| == | Equality |
+| != | Inequality |
+
+**Boolean Logical Operator**
+
+| Operator | Description |
+| -- | -- |
+| ! | logical negation of its operand |
+| & | evaluates both operands even if the left-hand operand evaluates to false |
+| `|` | evaluates both operands even if the left-hand operand evaluates to true |
+| ^ | returns false if both/all the expression returns true/false (eg. `false ^ false`, `true ^ true`) |
+| && | short-circuiting: doesn't evaluate the right-hand operand if the left-hand operand evaluates to false |
+| `||` | short-circuiting: doesn't evaluate the right-hand operand if the left-hand operand evaluates to true |
+
+
 ## References
 1. [Using .NET in Visual Studio Code](https://code.visualstudio.com/docs/languages/dotnet)
 2. [GitHub’s collection of .gitignore file templates](https://github.com/github/gitignore)
