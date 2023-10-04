@@ -19,6 +19,8 @@
             DisplayMeasurement(30);  // Output: Measured value is 30; too high.
             DisplayMeasurement(double.NaN);  // Output: Failed measurement.
 
+            Console.WriteLine(GetWeatherDisplay(15));  // output: Cold.
+            Console.WriteLine(GetWeatherDisplay(27));  // output: Perfect!
 
             void DisplayCharacter(char ch)
             {
@@ -61,6 +63,9 @@
                         break;
                 }
             }
+
+            string GetWeatherDisplay(double tempInCelsius) => tempInCelsius < 20.0 ? "Cold." : "Perfect!";
+
         }
 
 

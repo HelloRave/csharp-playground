@@ -97,7 +97,7 @@ Console.WriteLine(xs.GetType());  // output: System.Collections.Generic.List`1[S
 | -- | -- |
 | < | Less than |
 | > | Greater than |
-| <= | Less than equal to |
+| < = | Less than equal to |
 | >= | Greater than equal to |
 
 **Equality Operator**
@@ -120,7 +120,13 @@ Console.WriteLine(xs.GetType());  // output: System.Collections.Generic.List`1[S
 
 ## Selection statements - `if`, `if-else`, and `switch`
 
+**Default**
+
 `if(<condition>) { } else if (<condition>) { } else { }`
+
+**Ternary Conditional Operator**
+
+`condition ? consequent : alternative`
 
 ## References
 1. [Using .NET in Visual Studio Code](https://code.visualstudio.com/docs/languages/dotnet)
