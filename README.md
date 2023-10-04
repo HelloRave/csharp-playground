@@ -128,6 +128,169 @@ Console.WriteLine(xs.GetType());  // output: System.Collections.Generic.List`1[S
 
 `condition ? consequent : alternative`
 
+## Iteration Statements
+
+**`for`**
+
+- Executes a statement or a block of statements while a specified Boolean expression evaluates to true
+- Components:
+	- Initializer: `int i = 0` - executed only once
+	- Condition: `i < 3`
+	- Iterator: `i++` - can contain zero or more of the following statement expressions, separated by commas
+		- pre/post increment/decrement
+		- assignment
+		- invocation of a method
+		- await expression
+		- creation of an object by using the new operator
+	- Body
+
+```
+for (int i = 0; i < 3; i++)
+{
+    Console.Write(i);
+}
+
+// Output:
+// 012
+```
+
+```
+int i;
+int j = 3;
+for (i = 0, Console.WriteLine($"Start: i={i}, j={j}"); i < j; i++, j--, Console.WriteLine($"Step: i={i}, j={j}"))
+{
+    //...
+}
+
+// Output:
+// Start: i=0, j=3
+// Step: i=1, j=2
+// Step: i=2, j=1
+```
+
+**`foreach`**
+
+```
+var fibNumbers = new List<int> { 0, 1, 1, 2, 3, 5, 8, 13 };
+foreach (int element in fibNumbers)
+{
+    Console.Write($"{element} ");
+}
+// Output:
+// 0 1 1 2 3 5 8 13
+```
+
+**`do`**
+
+- Expression is evaluated **after** each execution of the loop, a do loop executes one or more times
+- Differs from the while loop, which executes zero or more times
+
+```
+int n = 0;
+do
+{
+    Console.Write(n);
+    n++;
+} while (n < 5);
+
+// Output:
+// 01234
+```
+
+**`while`**
+
+- Expression is evaluated **before** each execution of the loop
+
+```
+int n = 0;
+while (n < 5)
+{
+    Console.Write(n);
+    n++;
+}
+// Output:
+// 01234
+```
+
+## Jump statemets - `break`, `continue`, `return`, `goto`
+
+`break`
+
+- Terminates the closest enclosing iteration statement and transfers control to the statement that follows the terminated statement
+
+```
+for (int outer = 0; outer < 5; outer++)
+{
+    for (int inner = 0; inner < 5; inner++)
+    {
+        if (inner > outer)
+        {
+            break;
+        }
+
+        Console.Write($"{inner} ");
+    }
+    Console.WriteLine();
+}
+// Output:
+// 0
+// 0 1
+// 0 1 2
+// 0 1 2 3
+// 0 1 2 3 4
+```
+
+`continue`
+
+- Starts a new iteration of the closest enclosing iteration statement
+
+```
+for (int i = 0; i < 5; i++)
+{
+    Console.Write($"Iteration {i}: ");
+    
+    if (i < 3)
+    {
+        Console.WriteLine("skip");
+        continue;
+    }
+    
+    Console.WriteLine("done");
+}
+// Output:
+// Iteration 0: skip
+// Iteration 1: skip
+// Iteration 2: skip
+// Iteration 3: done
+// Iteration 4: done
+```
+
+`return`
+
+- Terminates execution of the function in which it appears and returns control and the function's result, if any, to the caller
+
+```
+Console.WriteLine("First call:");
+DisplayIfNecessary(6);
+
+Console.WriteLine("Second call:");
+DisplayIfNecessary(5);
+
+void DisplayIfNecessary(int number)
+{
+    if (number % 2 == 0)
+    {
+        return;
+    }
+
+    Console.WriteLine(number);
+}
+// Output:
+// First call:
+// Second call:
+// 5
+```
+
 ## References
 1. [Using .NET in Visual Studio Code](https://code.visualstudio.com/docs/languages/dotnet)
 2. [GitHub’s collection of .gitignore file templates](https://github.com/github/gitignore)
