@@ -1,4 +1,6 @@
-﻿namespace DataTypesVariables
+﻿using csharp_playground;
+
+namespace DataTypesVariables
 
 {
 
@@ -9,10 +11,22 @@
         public static void Main(string[] args)
 
         {
-            for (int i = 0; i < 3; i++)
-            {
-                Console.Write(i);
-            }
+            Car myCar = new Car();
+            Console.WriteLine(myCar.GetName());
+            myCar.SetName("myCar");
+            Console.WriteLine(myCar.GetName());
+
+            Console.WriteLine(myCar.HorsePower);
+            myCar.HorsePower = 1;
+            Console.WriteLine(myCar.HorsePower);
+
+            Console.WriteLine(myCar.ReadOnly);
+            myCar.WriteOnly = "Write Only";
+
+            myCar.Drive();
+            
+            Car bmw = new Car("bmw", 350);
+            bmw.Drive();
 
         }
 
