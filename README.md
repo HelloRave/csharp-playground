@@ -293,6 +293,12 @@ void DisplayIfNecessary(int number)
 
 ## Class
 
+## Arrays
+**Single Dimensional Array**
+
+**Multi Dimensional Array**
+
+**Jagged Array**
 
 ## References
 1. [Using .NET in Visual Studio Code](https://code.visualstudio.com/docs/languages/dotnet)
