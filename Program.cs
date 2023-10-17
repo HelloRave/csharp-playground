@@ -22,14 +22,14 @@ namespace DataTypesVariables
             Console.WriteLine(array1.Length);
 
             int[] array4 = new int[5];
-            for (int i = 0;  i < array4.Length; i++)
+            for (int i = 0; i < array4.Length; i++)
             {
                 array4[i] = i;
                 Console.WriteLine(i);
             }
 
             int[] array5 = new int[5];
-            foreach(int i in array5)
+            foreach (int i in array5)
             {
                 array5[i] = i;
                 Console.WriteLine(i);
@@ -57,7 +57,7 @@ namespace DataTypesVariables
 
             foreach (int item in multiDimensionalArray1)
             {
-                if (item %  2 == 0)
+                if (item % 2 == 0)
                 {
                     Console.WriteLine(item);
                 }
@@ -76,12 +76,12 @@ namespace DataTypesVariables
 
             for (int i = 0; i < multiDimensionalArray1.GetLength(0); i++)
             {
-                Console.WriteLine(multiDimensionalArray1[i,i]);
+                Console.WriteLine(multiDimensionalArray1[i, i]);
             }
 
             // Declare and set array element values.
             int[,] multiDimensionalArray2 = { { 1, 2, 3 }, { 4, 5, 6 } };
-            Console.WriteLine("Accessing value in 2D array: {0}", multiDimensionalArray2[1,2]);
+            Console.WriteLine("Accessing value in 2D array: {0}", multiDimensionalArray2[1, 2]);
             foreach (int item in multiDimensionalArray2)
             {
                 Console.Write(item);
@@ -89,10 +89,34 @@ namespace DataTypesVariables
             Console.WriteLine();
 
             // Declare a jagged array.
-            int[][] jaggedArray = new int[6][];
+            int[][] jaggedArray = new int[2][];
 
-            // Set the values of the first array in the jagged array structure.
+            int[][,] jaggedArray3 = new int[3][,]
+            {
+                new int[,] { {1,3}, {5,7} },
+                new int[,] { {0,2}, {4,6}, {8,10} },
+                new int[,] { {11,22}, {99,88}, {0,9} }
+            };
+
+            Console.Write("{0}", jaggedArray3[0][1, 0]);
+            Console.WriteLine(jaggedArray3.Length);
+
+            // Set the values of jagged array
             jaggedArray[0] = new int[4] { 1, 2, 3, 4 };
+            jaggedArray[1] = new int[5] { 1, 3, 5, 7, 9 };
+
+            for (int i = 0; i < jaggedArray.Length; i++)
+            {
+                Console.Write("Element({0}): ", i);
+
+                for (int j = 0; j < jaggedArray[i].Length; j++)
+                {
+                    Console.Write("{0}{1}", jaggedArray[i][j], j == (jaggedArray[i].Length - 1) ? "" : " ");
+                }
+
+                Console.WriteLine();
+            }
+
 
         }
 
