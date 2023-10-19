@@ -13,42 +13,48 @@ namespace DataTypesVariables
         public static void Main(string[] args)
 
         {
-            //Non-Generic Collections
-            ArrayList myArrayList = new ArrayList();
-            myArrayList.Add(1);
-            myArrayList.Add("Hello");
-            myArrayList.Add(3.142);
-            myArrayList.Add(2);
-            myArrayList.Add("Hello");
-            myArrayList.Add("Hello");
+            Hashtable hashtable = new Hashtable();
 
-            myArrayList.Remove(1);
-            myArrayList.RemoveAt(0);
-            myArrayList.RemoveRange(0, 2);
+            Student stud1 = new Student(1, "Maria", "Year 1");
+            Student stud2 = new Student(2, "Jason", "Year 2");
+            Student stud3 = new Student(3, "Clara", "Year 3");
 
-            Console.WriteLine(myArrayList.Count);
+            hashtable.Add(stud1.Id, stud1);
+            hashtable.Add(stud2.Id, stud2);
+            hashtable.Add(stud3.Id, stud3);
 
-            foreach (object item in myArrayList)
+            Student storedStudent1 = (Student)hashtable[1]!; // Need to cast to type Student else type object
+
+            Console.WriteLine($"Student ID: {storedStudent1.Id}, Name: {storedStudent1.Name}, Description: {storedStudent1.Description}");
+
+            foreach (DictionaryEntry item in hashtable)
             {
-                Console.WriteLine(item);
+                int id = (int)item.Key;
+                Student student = (Student)item.Value!;
+                Console.WriteLine("Key = {0}, Value.Id = {1}", id, student.Id);
             }
 
+            Hashtable studentTable = new Hashtable();
 
-            //Generic Collections (Indexable)
-            var numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            numbers.Add(1);
-            numbers.RemoveAt(2);
-
-            foreach (var item in numbers)
+            Student[] students =
             {
-                Console.Write(item + " ");
-            }
+                new Student(1, "Maria", "Year 1"),
+                new Student(2, "Jason", "Year 2"),
+                new Student(3, "Clara", "Year 3"),
+                new Student(3, "Nadia", "Year 3")
+            };
 
-            Console.WriteLine();
-
-            for (int i = 0; i < numbers.Count; i++)
+            foreach (Student student in students) 
             {
-                Console.Write(numbers[i] + " ");
+                if (!studentTable.ContainsKey(student.Id)) 
+                {
+                    studentTable.Add(student.Id, student);
+                    Console.WriteLine("Student with ID{0} was added", student.Id);
+                }
+                else
+                {
+                    Console.WriteLine("Student with ID{0} already exists", student.Id);
+                }
             }
         }
 
