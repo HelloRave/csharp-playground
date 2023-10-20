@@ -305,6 +305,10 @@ void DisplayIfNecessary(int number)
 
 **Key/value pair Collections | Dictionary**
 
+**Stack**
+
+**Queue**
+
 **Hashtable**
 
 ## References
