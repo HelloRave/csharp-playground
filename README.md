@@ -303,7 +303,7 @@ void DisplayIfNecessary(int number)
 ## Collections
 **Indexable Collections**
 
-**Key/value pair Collections**
+**Key/value pair Collections | Dictionary**
 
 **Hashtable**
 
