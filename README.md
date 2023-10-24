@@ -293,6 +293,8 @@ void DisplayIfNecessary(int number)
 
 ## Class
 
+**Inheritance**
+
 ## Arrays
 **Single Dimensional Array**
 
