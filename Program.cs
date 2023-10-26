@@ -13,19 +13,14 @@ namespace DataTypesVariables
         public static void Main(string[] args)
 
         {
-            Radio radio = new (false, "Sony");
-            radio.ListenRadio();
-            radio.SwitchOn();
-            radio.ListenRadio();
+            Chair gamingChair = new("Brown", "Plastic");
+            Chair officeChair = new("Red", "Wood");
+            Car damagedCar = new(80f, "Green");
 
-            Console.WriteLine();
+            damagedCar.DestroyablesNearby.Add(gamingChair);
+            damagedCar.DestroyablesNearby.Add(officeChair);
 
-            Dog puppy = new("Alvin", 5);
-            puppy.Eat();
-            puppy.MakeSound();
-            puppy.Play();
-            puppy.IsHappy = false;
-            puppy.Play();
+            damagedCar.Destroy();
         }
 
     }

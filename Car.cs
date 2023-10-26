@@ -6,47 +6,24 @@ using System.Threading.Tasks;
 
 namespace csharp_playground
 {
-    internal class Car
+    internal class Car: Vehicle, IDestroyable
     {
-        private string _name;
-        private int _hp;
-        private string _writeOnly;
-        public int HorsePower { get { return _hp; } set { _hp = value; } }
-
-        //Auto Implemented Properties
-        public int MaxSpeed { get; set; }
-
-        public string ReadOnly { get; } = "Read only property";
-
-        public string WriteOnly { set { _writeOnly = value; } }
-
-        //Constructor
-        public Car()
+        public string DestructionSound { get; set; }
+        public List<IDestroyable> DestroyablesNearby;
+        public Car(float speed, string color)
         {
-            _name = "Car";
-            _hp = 0;
-            _writeOnly = "";
+            this.Speed = speed;
+            this.Color = color;
+            DestructionSound = "DestroyCar.mp3";
+            DestroyablesNearby = new List<IDestroyable>();
         }
-
-        // Constructor
-        public Car(string name, int hp = 0) 
+        public void Destroy()
         {
-            _name = name;
-            _hp = hp;
-            _writeOnly = "";
-            Console.WriteLine(name + " is created");
+            Console.WriteLine("Car is destroyed, sound {0} ", DestructionSound);
+            foreach (IDestroyable destroyable in DestroyablesNearby)
+            {
+                destroyable.Destroy();
+            }
         }
-
-        //Getter
-        public string GetName() { return _name; }
-
-        //Setters
-        public void SetName(string name)
-        {
-            _name = name;
-        }
-
-        //Methods
-        public void Drive() { Console.WriteLine("Car is driving"); }
     }
 }
