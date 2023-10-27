@@ -9,70 +9,45 @@ namespace DataTypesVariables
     public class Program
 
     {
-
         public static void Main(string[] args)
-
         {
-            DogShelter dogShelter = new ();
-
-            foreach (Dog dog in dogShelter)
+            Circle circle = new();
+            Circle circle2 = new(1, 1, 3.14f);
+            Rectangle rectangle = new Rectangle();
+            List<Shape> shapes = new ()
             {
-                if (!dog.IsNaughtyDog)
-                {
-                    dog.GiveTreat(2);
-                }
-                else
-                {
-                    dog.GiveTreat(1);
-                }
+                circle, circle2, rectangle
+            };
+
+            foreach (var item in shapes)
+            {
+                item.Draw();
             }
 
-            IEnumerable<int> unknownCollection;
-            unknownCollection = GetCollection(1);
-            foreach (int unknown in unknownCollection)
-            {
-                Console.WriteLine(unknown);
-            }
+            Console.WriteLine();
 
-            unknownCollection = GetCollection(2);
-            CollectionSum(unknownCollection);
+            Shape rectangle2 = new Rectangle();
+            rectangle.ShowDetails();
+            rectangle2.ShowDetails();
+            rectangle2.Draw();
+
+            Console.WriteLine();
+
+            SmallRectangle smallRectangle = new ();
+            smallRectangle.ShowDetails();
+            smallRectangle.Draw();
+
+            Console.WriteLine();
+
+            ExtendSmallRectangle extendSmallRectangle = new ();
+            extendSmallRectangle.Draw();
+            extendSmallRectangle.ShowDetails();
+
+            Console.WriteLine();
+
+            Shape random = new ExtendSmallRectangle ();
+            random.Draw();
         }
-
-        static IEnumerable<int> GetCollection(int option)
-        {
-            List<int> collection = new List<int>() { 1, 2, 3, 4, 5 };
-            Queue<int> queue = new Queue<int>();
-            queue.Enqueue(6);
-            queue.Enqueue(7);
-            queue.Enqueue(8);
-            queue.Enqueue(9);
-            queue.Enqueue(10);
-
-            if (option == 1)
-            {
-                return collection;
-            }
-            else if (option == 2)
-            {
-                return queue;
-            }
-            else
-            {
-                return new int[] { 11, 12, 13, 14, 15 };
-            }
-        }
-
-        static void CollectionSum(IEnumerable<int> collection)
-        {
-            int sum = 0;
-            foreach (int num in collection)
-            {
-                sum += num;
-            }
-
-            Console.WriteLine("Sum is {0}", sum);
-        }
-
     }
 
 }
