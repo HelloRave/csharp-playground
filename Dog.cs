@@ -6,32 +6,27 @@ using System.Threading.Tasks;
 
 namespace csharp_playground
 {
-    internal class Dog: Animal
+    internal class Dog
     {
-        public bool IsHappy { get; set; }
-        public Dog(string name, int age): base(name, age)
+        //the name of the dog
+        public string Name { get; set; }
+
+        //is this a naughty dog?
+        public bool IsNaughtyDog { get; set; }
+
+        //simple constructor
+        public Dog(string name, bool isNaughtyDog)
         {
-            IsHappy = true;
-        }
-        public override void MakeSound()
-        {
-            Console.WriteLine("Woof");
+            this.Name = name;
+            this.IsNaughtyDog = isNaughtyDog;
+
         }
 
-        public override void Eat()
+        //This method will print how many treats the dog received
+        public void GiveTreat(int numberOfTreats)
         {
-            base.Eat();
-        }
-        public override void Play()
-        {
-            if (IsHappy)
-            {
-                base.Play();
-            }
-            else
-            {
-                Console.WriteLine($"{Name} is unhappy.");
-            }
+            //print a message containing the number of treats and the name of the dog
+            Console.WriteLine("Dog: {0} said wuoff {1} times!", Name, numberOfTreats);
         }
     }
 }
