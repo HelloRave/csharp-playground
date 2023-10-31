@@ -22,6 +22,15 @@ namespace DataTypesVariables
             foreach (var item in shapes)
             {
                 item.Draw();
+                Circle? someCircle = item as Circle;
+                if (someCircle == null)
+                {
+                    Console.WriteLine("Shape is not circle");
+                }
+                if (someCircle is Circle)
+                {
+                    Console.WriteLine("Shape is circle");
+                }
             }
 
             Console.WriteLine();
