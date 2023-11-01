@@ -11,51 +11,39 @@ namespace DataTypesVariables
     {
         public static void Main(string[] args)
         {
-            Circle circle = new();
-            Circle circle2 = new(1, 1, 3.14f);
-            Rectangle rectangle = new Rectangle();
-            List<Shape> shapes = new ()
-            {
-                circle, circle2, rectangle
-            };
+            string text = File.ReadAllText(@"C:\Users\weiwei.huang\Desktop\VMShare\new.txt");
+            Console.WriteLine(text);
 
-            foreach (var item in shapes)
+            string[] lines = File.ReadAllLines(@"C:\Users\weiwei.huang\Desktop\VMShare\new.txt");
+            foreach (string line in lines)
             {
-                item.Draw();
-                Circle? someCircle = item as Circle;
-                if (someCircle == null)
+                Console.WriteLine(line);
+            }
+
+            string[] textLines = { "first line", "second line", "third line" };
+            File.WriteAllLines(@"C:\Users\weiwei.huang\Desktop\VMShare\new.txt", textLines);
+
+            string fileName = Console.ReadLine() ?? "testFile";
+            string input = Console.ReadLine() ?? "no input";
+
+            File.WriteAllText(@"C:\Users\weiwei.huang\Desktop\VMShare\" + fileName + ".txt", input);
+
+            using (StreamWriter file = new StreamWriter(@"C:\Users\weiwei.huang\Desktop\VMShare\testFile.txt")) 
+            {
+                foreach (string line in lines)
                 {
-                    Console.WriteLine("Shape is not circle");
-                }
-                if (someCircle is Circle)
-                {
-                    Console.WriteLine("Shape is circle");
+                    if (line.Contains("third"))
+                    {
+                        file.WriteLine(line);
+                    }
                 }
             }
 
-            Console.WriteLine();
+            using (StreamWriter file = new StreamWriter(@"C:\Users\weiwei.huang\Desktop\VMShare\testFile.txt", true))
+            {
+                file.WriteLine("Previous entries not overwritten");
+            }
 
-            Shape rectangle2 = new Rectangle();
-            rectangle.ShowDetails();
-            rectangle2.ShowDetails();
-            rectangle2.Draw();
-
-            Console.WriteLine();
-
-            SmallRectangle smallRectangle = new ();
-            smallRectangle.ShowDetails();
-            smallRectangle.Draw();
-
-            Console.WriteLine();
-
-            ExtendSmallRectangle extendSmallRectangle = new ();
-            extendSmallRectangle.Draw();
-            extendSmallRectangle.ShowDetails();
-
-            Console.WriteLine();
-
-            Shape random = new ExtendSmallRectangle ();
-            random.Draw();
         }
     }
 
