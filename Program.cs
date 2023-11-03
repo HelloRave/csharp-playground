@@ -1,49 +1,32 @@
-﻿using csharp_playground;
-using System.Collections;
+﻿using System.Collections;
 using System.Diagnostics.Metrics;
 
 namespace DataTypesVariables
 
 {
+    struct Game
+    {
+        public string name;
+        public string developer;
+        public double rating;
+        public string releaseDate;
 
+        public void Display()
+        {
+            Console.WriteLine("Game 1's name is {0}", name);
+        }
+    }
     public class Program
 
     {
         public static void Main(string[] args)
         {
-            string text = File.ReadAllText(@"C:\Users\weiwei.huang\Desktop\VMShare\new.txt");
-            Console.WriteLine(text);
-
-            string[] lines = File.ReadAllLines(@"C:\Users\weiwei.huang\Desktop\VMShare\new.txt");
-            foreach (string line in lines)
-            {
-                Console.WriteLine(line);
-            }
-
-            string[] textLines = { "first line", "second line", "third line" };
-            File.WriteAllLines(@"C:\Users\weiwei.huang\Desktop\VMShare\new.txt", textLines);
-
-            string fileName = Console.ReadLine() ?? "testFile";
-            string input = Console.ReadLine() ?? "no input";
-
-            File.WriteAllText(@"C:\Users\weiwei.huang\Desktop\VMShare\" + fileName + ".txt", input);
-
-            using (StreamWriter file = new StreamWriter(@"C:\Users\weiwei.huang\Desktop\VMShare\testFile.txt")) 
-            {
-                foreach (string line in lines)
-                {
-                    if (line.Contains("third"))
-                    {
-                        file.WriteLine(line);
-                    }
-                }
-            }
-
-            using (StreamWriter file = new StreamWriter(@"C:\Users\weiwei.huang\Desktop\VMShare\testFile.txt", true))
-            {
-                file.WriteLine("Previous entries not overwritten");
-            }
-
+            Game game1;
+            game1.name = "Pokemon Go";
+            game1.developer = "Ash";
+            game1.rating = 5;
+            game1.releaseDate = "02-02-2022";
+            game1.Display();
         }
     }
 
