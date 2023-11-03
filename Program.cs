@@ -10,19 +10,22 @@ namespace DataTypesVariables
     {
         public static void Main(string[] args)
         {
-            Regex regex = new Regex(@"\d");
+            DateTime dateTime = new DateTime(2018, 5, 31);
 
-            string text = "Hi there, my number is 12313";
+            Console.WriteLine("Date is {0}", dateTime);
+            Console.WriteLine("Today: {0}", DateTime.Today);
+            Console.WriteLine("Time now: {0}", DateTime.Now);
+            Console.WriteLine("Minutes of time now: {0}", DateTime.Now.Minute);
+            Console.WriteLine("Tomorrow: {0}", DateTime.Now.AddDays(1));
 
-            MatchCollection matches = regex.Matches(text);
-
-            Console.WriteLine(matches.Count);
-
-            foreach (Match hit in matches)
+            Console.WriteLine("Write date in yyyy-mm-dd");
+            string input = Console.ReadLine();
+            DateTime output;
+            if (DateTime.TryParse(input, out output))
             {
-                GroupCollection group = hit.Groups;
-                Console.WriteLine("Group Collection: {0} hits found in: \n {1}", group[0].Value, group[1].Index);
-                Console.WriteLine("{0} hits found in: \n {1}", hit.Value, hit.Index);
+                Console.WriteLine(output);
+                TimeSpan daysPassed = DateTime.Now.Subtract(output);
+                Console.WriteLine("Days passed: {0}", daysPassed.Days);
             }
         }
     }
