@@ -72,6 +72,11 @@ Console.WriteLine(xs.GetType());  // output: System.Collections.Generic.List`1[S
 
 `try { } catch (Exception) { } finally { }`
 
+**Anonymous methods**
+
+**Lambda expression**
+
+
 ## Operators
 **Arithmetic Operator**
 

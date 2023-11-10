@@ -42,13 +42,13 @@ namespace DataTypesVariables
             DisplayPeople("----Kids----", values, IsMinor);
             DisplayPeople("----Adults----", values, IsAdult);
 
-            FilterDelegate filter = delegate (Person p)
+            FilterDelegate filter = (Person p) =>
             {
                 return p.Age >= 20 && p.Age <= 30;
             };
 
             DisplayPeople("----Between 20-30----", values, filter);
-            DisplayPeople("----All----", values, delegate (Person p) { return true; });
+            DisplayPeople("----All----", values, p => true);
         }
         public static bool Filter(string s)
         {
