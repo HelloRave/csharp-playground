@@ -433,6 +433,55 @@ jaggedArray2[2][1] = 88;
 
 ## Delegates
 
+## Misc
+**`params` Modifier**
+
+```
+public static void UseParams(params int[] list)
+    {
+        for (int i = 0; i < list.Length; i++)
+        {
+            Console.Write(list[i] + " ");
+        }
+        Console.WriteLine();
+    }
+
+    public static void UseParams2(params object[] list)
+    {
+        for (int i = 0; i < list.Length; i++)
+        {
+            Console.Write(list[i] + " ");
+        }
+        Console.WriteLine();
+    }
+
+// You can send a comma-separated list of arguments of the
+// specified type.
+UseParams(1, 2, 3, 4);
+UseParams2(1, 'a', "test");
+
+// A params parameter accepts zero or more arguments.
+// The following calling statement displays only a blank line.
+UseParams2();
+
+// An array argument can be passed, as long as the array
+// type matches the parameter type of the method being called.
+int[] myIntArray = { 5, 6, 7, 8, 9 };
+UseParams(myIntArray);
+
+object[] myObjArray = { 2, 'b', "test", "again" };
+UseParams2(myObjArray);
+
+/*
+Output:
+    1 2 3 4
+    1 a test
+
+    5 6 7 8 9
+    2 b test again
+*/
+```
+
 ## References
 1. [Using .NET in Visual Studio Code](https://code.visualstudio.com/docs/languages/dotnet)
 2. [GitHub’s collection of .gitignore file templates](https://github.com/github/gitignore)
