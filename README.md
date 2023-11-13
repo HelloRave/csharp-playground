@@ -301,11 +301,78 @@ void DisplayIfNecessary(int number)
 **Inheritance**
 
 ## Arrays
+
+- The number of dimensions are set when an array variable is declared. The length of each dimension is established when the array instance is created. These values can't be changed during the lifetime of the instance.
+- Array types are reference types derived from the abstract base type Array. All arrays implement IList and IEnumerable
+
 **Single Dimensional Array**
+```
+// Declare a single-dimensional array.
+int[] array1 = new int[5];
+array1[0] = 20;
+array1[1] = 30;
+array1[2] = 50;
+array1[3] = 50;
+array1[4] = 50;
+
+// Declare and set array element values.
+int[] array2 = { 1, 2, 3, 4, 5, 6 };
+```
 
 **Multi Dimensional Array**
+```
+// Declare a two dimensional array.
+int[,] array2DDeclaration = new int[4, 2];
+int[,,] array3DDeclaration = new int[4, 2, 3];
+
+// Declare and set array element values.
+int[,] array2DInitialization =  { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };
+int[,,] array3D = new int[,,] { { { 1, 2, 3 }, { 4,   5,  6 } },
+                                { { 7, 8, 9 }, { 10, 11, 12 } } };
+
+for (int i = 0; i < array3D.GetLength(0); i++)
+{
+    for (int j = 0; j < array3D.GetLength(1); j++)
+    {
+        for (int k = 0; k < array3D.GetLength(2); k++)
+        {
+            System.Console.Write($"{array3D[i, j, k]} ");
+        }
+        System.Console.WriteLine();
+    }
+    System.Console.WriteLine();
+}
+// Output (including blank lines): 
+// 1 2 3
+// 4 5 6
+// 
+// 7 8 9
+// 10 11 12
+//
+```
 
 **Jagged Array**
+- A jagged array is an array of arrays, and each member array has the default value of null
+```
+// Declare a jagged array.
+int[][] jaggedArray = new int[3][];
+jaggedArray[0] = new int[] { 1, 3, 5, 7, 9 };
+jaggedArray[1] = new int[] { 0, 2, 4, 6 };
+jaggedArray[2] = new int[] { 11, 22 };
+
+int[][] jaggedArray2 = 
+{
+    new int[] { 1, 3, 5, 7, 9 },
+    new int[] { 0, 2, 4, 6 },
+    new int[] { 11, 22 }
+};
+
+// Assign 77 to the second element ([1]) of the first array ([0]):
+jaggedArray2[0][1] = 77;
+
+// Assign 88 to the second element ([1]) of the third array ([2]):
+jaggedArray2[2][1] = 88;
+```
 
 ## Collections
 **Indexable Collections**
