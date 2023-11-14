@@ -301,22 +301,395 @@ void DisplayIfNecessary(int number)
 **Inheritance**
 
 ## Arrays
+
+- The number of dimensions are set when an array variable is declared. The length of each dimension is established when the array instance is created. These values can't be changed during the lifetime of the instance.
+- Array types are reference types derived from the abstract base type Array. All arrays implement IList and IEnumerable
+
 **Single Dimensional Array**
+```
+// Declare a single-dimensional array.
+int[] array1 = new int[5];
+array1[0] = 20;
+array1[1] = 30;
+array1[2] = 50;
+array1[3] = 50;
+array1[4] = 50;
+
+// Declare and set array element values.
+int[] array2 = { 1, 2, 3, 4, 5, 6 };
+```
 
 **Multi Dimensional Array**
+```
+// Declare a two dimensional array.
+int[,] array2DDeclaration = new int[4, 2];
+int[,,] array3DDeclaration = new int[4, 2, 3];
+
+// Declare and set array element values.
+int[,] array2DInitialization =  { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };
+int[,,] array3D = new int[,,] { { { 1, 2, 3 }, { 4,   5,  6 } },
+                                { { 7, 8, 9 }, { 10, 11, 12 } } };
+
+for (int i = 0; i < array3D.GetLength(0); i++)
+{
+    for (int j = 0; j < array3D.GetLength(1); j++)
+    {
+        for (int k = 0; k < array3D.GetLength(2); k++)
+        {
+            System.Console.Write($"{array3D[i, j, k]} ");
+        }
+        System.Console.WriteLine();
+    }
+    System.Console.WriteLine();
+}
+// Output (including blank lines): 
+// 1 2 3
+// 4 5 6
+// 
+// 7 8 9
+// 10 11 12
+//
+```
 
 **Jagged Array**
+- A jagged array is an array of arrays, and each member array has the default value of null
+```
+// Declare a jagged array.
+int[][] jaggedArray = new int[3][];
+jaggedArray[0] = new int[] { 1, 3, 5, 7, 9 };
+jaggedArray[1] = new int[] { 0, 2, 4, 6 };
+jaggedArray[2] = new int[] { 11, 22 };
+
+int[][] jaggedArray2 = 
+{
+    new int[] { 1, 3, 5, 7, 9 },
+    new int[] { 0, 2, 4, 6 },
+    new int[] { 11, 22 }
+};
+
+// Assign 77 to the second element ([1]) of the first array ([0]):
+jaggedArray2[0][1] = 77;
+
+// Assign 88 to the second element ([1]) of the third array ([2]):
+jaggedArray2[2][1] = 88;
+```
 
 ## Collections
 **Indexable Collections**
+```
+// Create a list of strings by using a
+// collection initializer.
+var salmons = new List<string> { "chinook", "coho", "pink", "sockeye" };
+
+// Iterate through the list.
+foreach (var salmon in salmons)
+{
+    Console.Write(salmon + " ");
+}
+// Output: chinook coho pink sockeye
+
+// Remove an element from the list by specifying
+// the object.
+salmons.Remove("coho");
+
+
+// Iterate using the index:
+for (var index = 0; index < salmons.Count; index++)
+{
+    Console.Write(salmons[index] + " ");
+}
+// Output: chinook pink sockeye
+
+// Add the removed element
+salmons.Add("coho");
+// Iterate through the list.
+foreach (var salmon in salmons)
+{
+    Console.Write(salmon + " ");
+}
+// Output: chinook pink sockeye coho
+```
 
 **Key/value pair Collections | Dictionary**
+```
+// Create a new dictionary of strings, with string keys.
+
+Dictionary<string, string> openWith =
+    new Dictionary<string, string>();
+
+// Add some elements to the dictionary. There are no
+// duplicate keys, but some of the values are duplicates.
+openWith.Add("txt", "notepad.exe");
+openWith.Add("bmp", "paint.exe");
+openWith.Add("dib", "paint.exe");
+openWith.Add("rtf", "wordpad.exe");
+
+// The Add method throws an exception if the new key is
+// already in the dictionary.
+try
+{
+    openWith.Add("txt", "winword.exe");
+}
+catch (ArgumentException)
+{
+    Console.WriteLine("An element with Key = \"txt\" already exists.");
+}
+
+// The Item property is another name for the indexer, so you
+// can omit its name when accessing elements.
+Console.WriteLine("For key = \"rtf\", value = {0}.",
+    openWith["rtf"]);
+
+// The indexer can be used to change the value associated
+// with a key.
+openWith["rtf"] = "winword.exe";
+Console.WriteLine("For key = \"rtf\", value = {0}.",
+    openWith["rtf"]);
+
+// If a key does not exist, setting the indexer for that key
+// adds a new key/value pair.
+openWith["doc"] = "winword.exe";
+
+// The indexer throws an exception if the requested key is
+// not in the dictionary.
+try
+{
+    Console.WriteLine("For key = \"tif\", value = {0}.",
+        openWith["tif"]);
+}
+catch (KeyNotFoundException)
+{
+    Console.WriteLine("Key = \"tif\" is not found.");
+}
+
+// When a program often has to try keys that turn out not to
+// be in the dictionary, TryGetValue can be a more efficient
+// way to retrieve values.
+string value = "";
+if (openWith.TryGetValue("tif", out value))
+{
+    Console.WriteLine("For key = \"tif\", value = {0}.", value);
+}
+else
+{
+    Console.WriteLine("Key = \"tif\" is not found.");
+}
+
+// ContainsKey can be used to test keys before inserting
+// them.
+if (!openWith.ContainsKey("ht"))
+{
+    openWith.Add("ht", "hypertrm.exe");
+    Console.WriteLine("Value added for key = \"ht\": {0}",
+        openWith["ht"]);
+}
+
+// When you use foreach to enumerate dictionary elements,
+// the elements are retrieved as KeyValuePair objects.
+Console.WriteLine();
+foreach( KeyValuePair<string, string> kvp in openWith )
+{
+    Console.WriteLine("Key = {0}, Value = {1}",
+        kvp.Key, kvp.Value);
+}
+
+// To get the values alone, use the Values property.
+Dictionary<string, string>.ValueCollection valueColl =
+    openWith.Values;
+
+// The elements of the ValueCollection are strongly typed
+// with the type that was specified for dictionary values.
+Console.WriteLine();
+foreach( string s in valueColl )
+{
+    Console.WriteLine("Value = {0}", s);
+}
+
+// To get the keys alone, use the Keys property.
+Dictionary<string, string>.KeyCollection keyColl =
+    openWith.Keys;
+
+// The elements of the KeyCollection are strongly typed
+// with the type that was specified for dictionary keys.
+Console.WriteLine();
+foreach( string s in keyColl )
+{
+    Console.WriteLine("Key = {0}", s);
+}
+
+// Use the Remove method to remove a key/value pair.
+Console.WriteLine("\nRemove(\"doc\")");
+openWith.Remove("doc");
+
+if (!openWith.ContainsKey("doc"))
+{
+    Console.WriteLine("Key \"doc\" is not found.");
+}
+
+/* This code example produces the following output:
+
+An element with Key = "txt" already exists.
+For key = "rtf", value = wordpad.exe.
+For key = "rtf", value = winword.exe.
+Key = "tif" is not found.
+Key = "tif" is not found.
+Value added for key = "ht": hypertrm.exe
+
+Key = txt, Value = notepad.exe
+Key = bmp, Value = paint.exe
+Key = dib, Value = paint.exe
+Key = rtf, Value = winword.exe
+Key = doc, Value = winword.exe
+Key = ht, Value = hypertrm.exe
+
+Value = notepad.exe
+Value = paint.exe
+Value = paint.exe
+Value = winword.exe
+Value = winword.exe
+Value = hypertrm.exe
+
+Key = txt
+Key = bmp
+Key = dib
+Key = rtf
+Key = doc
+Key = ht
+
+Remove("doc")
+Key "doc" is not found.
+*/
+```
 
 **Stack**
 
 **Queue**
 
 **Hashtable**
+```
+using System;
+using System.Collections;
+
+class Example
+{
+    public static void Main()
+    {
+        // Create a new hash table.
+        //
+        Hashtable openWith = new Hashtable();
+
+        // Add some elements to the hash table. There are no
+        // duplicate keys, but some of the values are duplicates.
+        openWith.Add("txt", "notepad.exe");
+        openWith.Add("bmp", "paint.exe");
+        openWith.Add("dib", "paint.exe");
+        openWith.Add("rtf", "wordpad.exe");
+
+        // The Add method throws an exception if the new key is
+        // already in the hash table.
+        try
+        {
+            openWith.Add("txt", "winword.exe");
+        }
+        catch
+        {
+            Console.WriteLine("An element with Key = \"txt\" already exists.");
+        }
+
+        // The Item property is the default property, so you
+        // can omit its name when accessing elements.
+        Console.WriteLine("For key = \"rtf\", value = {0}.", openWith["rtf"]);
+
+        // The default Item property can be used to change the value
+        // associated with a key.
+        openWith["rtf"] = "winword.exe";
+        Console.WriteLine("For key = \"rtf\", value = {0}.", openWith["rtf"]);
+
+        // If a key does not exist, setting the default Item property
+        // for that key adds a new key/value pair.
+        openWith["doc"] = "winword.exe";
+
+        // ContainsKey can be used to test keys before inserting
+        // them.
+        if (!openWith.ContainsKey("ht"))
+        {
+            openWith.Add("ht", "hypertrm.exe");
+            Console.WriteLine("Value added for key = \"ht\": {0}", openWith["ht"]);
+        }
+
+        // When you use foreach to enumerate hash table elements,
+        // the elements are retrieved as KeyValuePair objects.
+        Console.WriteLine();
+        foreach( DictionaryEntry de in openWith )
+        {
+            Console.WriteLine("Key = {0}, Value = {1}", de.Key, de.Value);
+        }
+
+        // To get the values alone, use the Values property.
+        ICollection valueColl = openWith.Values;
+
+        // The elements of the ValueCollection are strongly typed
+        // with the type that was specified for hash table values.
+        Console.WriteLine();
+        foreach( string s in valueColl )
+        {
+            Console.WriteLine("Value = {0}", s);
+        }
+
+        // To get the keys alone, use the Keys property.
+        ICollection keyColl = openWith.Keys;
+
+        // The elements of the KeyCollection are strongly typed
+        // with the type that was specified for hash table keys.
+        Console.WriteLine();
+        foreach( string s in keyColl )
+        {
+            Console.WriteLine("Key = {0}", s);
+        }
+
+        // Use the Remove method to remove a key/value pair.
+        Console.WriteLine("\nRemove(\"doc\")");
+        openWith.Remove("doc");
+
+        if (!openWith.ContainsKey("doc"))
+        {
+            Console.WriteLine("Key \"doc\" is not found.");
+        }
+    }
+}
+
+/* This code example produces the following output:
+
+An element with Key = "txt" already exists.
+For key = "rtf", value = wordpad.exe.
+For key = "rtf", value = winword.exe.
+Value added for key = "ht": hypertrm.exe
+
+Key = dib, Value = paint.exe
+Key = txt, Value = notepad.exe
+Key = ht, Value = hypertrm.exe
+Key = bmp, Value = paint.exe
+Key = rtf, Value = winword.exe
+Key = doc, Value = winword.exe
+
+Value = paint.exe
+Value = notepad.exe
+Value = hypertrm.exe
+Value = paint.exe
+Value = winword.exe
+Value = winword.exe
+
+Key = dib
+Key = txt
+Key = ht
+Key = bmp
+Key = rtf
+Key = doc
+
+Remove("doc")
+Key "doc" is not found.
+ */
+```
 
 ## Regex
 **CHARACTER ESCAPES**
@@ -365,6 +738,55 @@ void DisplayIfNecessary(int number)
 - `.[{()\^$\?*+`
 
 ## Delegates
+
+## Misc
+**`params` Modifier**
+
+```
+public static void UseParams(params int[] list)
+    {
+        for (int i = 0; i < list.Length; i++)
+        {
+            Console.Write(list[i] + " ");
+        }
+        Console.WriteLine();
+    }
+
+    public static void UseParams2(params object[] list)
+    {
+        for (int i = 0; i < list.Length; i++)
+        {
+            Console.Write(list[i] + " ");
+        }
+        Console.WriteLine();
+    }
+
+// You can send a comma-separated list of arguments of the
+// specified type.
+UseParams(1, 2, 3, 4);
+UseParams2(1, 'a', "test");
+
+// A params parameter accepts zero or more arguments.
+// The following calling statement displays only a blank line.
+UseParams2();
+
+// An array argument can be passed, as long as the array
+// type matches the parameter type of the method being called.
+int[] myIntArray = { 5, 6, 7, 8, 9 };
+UseParams(myIntArray);
+
+object[] myObjArray = { 2, 'b', "test", "again" };
+UseParams2(myObjArray);
+
+/*
+Output:
+    1 2 3 4
+    1 a test
+
+    5 6 7 8 9
+    2 b test again
+*/
+```
 
 ## References
 1. [Using .NET in Visual Studio Code](https://code.visualstudio.com/docs/languages/dotnet)
